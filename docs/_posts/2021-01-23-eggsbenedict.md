@@ -1,0 +1,16 @@
+---
+title: 'Eggs Benedict mit Bacon'
+categories:
+  - Blog
+tags:
+  - Essen
+---
+
+Frühstück: Eggs Benedict mit Bacon
+
+Poschierte Eier auf English Muffins und knusprigen Bacon. Garniert mit Hollandaise Sauce und Schnittlauch
+
+#poschiertesei #eggsbenedict #eierbenedikt #bacon #schnittlauch
+
+
+![](..\..\.\assets\2021-01-23-eggsbenedict\1.jpg)
