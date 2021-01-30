@@ -54,6 +54,7 @@ def add_mediainfo_to_child_media(d, access_token_instagram):
                 child["permalink"] = singlemedia_json["permalink"]
                 child["timestamp"] = singlemedia_json["timestamp"]
     print("Media Information from Child Media loaded")
+    return d
     
 
 
