@@ -51,7 +51,7 @@ plugins:
   - jekyll-include-cache
 
 author:
-  name   : ""
+  name   : "meinessentagebuch"
   avatar : "/assets/images/cooking-book.png"
   bio    : "Mein Essentagebuch und Rezepte"
   links:
