@@ -1,10 +1,25 @@
 ---
-title: 'Menü: Sonntag 10.01.2021'
+title: 'Menü: Sonntag 10.01.2021 "Comfort Food"'
 categories:
   - Blog
 tags:
-  - Essen
-  - Menü
+  - [
+  - "
+  - E
+  - s
+  - s
+  - e
+  - n
+  - "
+  - ,
+  -  
+  - "
+  - M
+  - e
+  - n
+  - ü
+  - "
+  - ]
 ---
 
 Sonntag 10.01.2021
@@ -15,14 +30,12 @@ Als Hauptspeise der bereits gezeigte Rinderschmorbraten mit Klößen und Blaukra
 Als Nachspeise einfach Tartes mit Mascarpone und Früchte garniert.
 
 #maronen #suppe #maronensuppe #rinderbraten #schmorbraten #klöße #rotkohl #blaukraut #blätterteig #tartes #früchte
+![](..\..\.\assets\2021-01-10-sonntag-comfortfood\1.jpg)
 
+![](..\..\.\assets\2021-01-10-sonntag-comfortfood\2.jpg)
 
-![](..\..\.\assets\2021-01-10-sonntag\1.jpg)
+![](..\..\.\assets\2021-01-10-sonntag-comfortfood\3.jpg)
 
-![](..\..\.\assets\2021-01-10-sonntag\2.jpg)
-
-![](..\..\.\assets\2021-01-10-sonntag\3.jpg)
-
-![](..\..\.\assets\2021-01-10-sonntag\4.jpg)
+![](..\..\.\assets\2021-01-10-sonntag-comfortfood\4.jpg)
 
 
