@@ -185,6 +185,7 @@ def generate_posts(instagram_data, metadata):
     for f in files:
         os.remove(f)
     for postkey in instagram_data:
+        print(postkey)
         post = instagram_data[postkey]
         jsonMetaData = get_metadata(post["permalink"], metadata)
         filename = jsonMetaData["date"] + "-" + jsonMetaData["date"]  + "-" +  jsonMetaData["filename"] + ".md"
@@ -294,7 +295,6 @@ def load_instagram_data():
     with open('data/instagram_data.json', 'w') as fp:
         json.dump(instagram_local_data, fp)
     return instagram_local_data
-
 
 # In[14]:
 
