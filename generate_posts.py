@@ -115,7 +115,7 @@ def get_google_sheets_data():
         print (e)
 
 
-# In[7]:
+# In[23]:
 
 
 # 3. get all media and child media
@@ -217,7 +217,7 @@ def generate_posts(instagram_data, metadata):
     print("all posts generated")
 
 
-# In[9]:
+# In[21]:
 
 
 def get_metadata(permalink, metadata):
@@ -296,7 +296,7 @@ def load_instagram_data():
     return instagram_local_data
 
 
-# In[14]:
+# In[27]:
 
 
 metadata = get_google_sheets_data()
