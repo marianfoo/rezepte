@@ -115,7 +115,7 @@ def get_google_sheets_data():
         print (e)
 
 
-# In[23]:
+# In[7]:
 
 
 # 3. get all media and child media
@@ -153,8 +153,8 @@ def get_insta_media(post):
     count = 1
     try:
         os.mkdir("docs/assets/"+ folder_name)
-    except OSError:
-        error = 1
+    except OSError as e:
+        print(e)
     if "children" in post:
         for child in post["children"]["data"]:
             filename = r'docs/assets/'+ folder_name + "/" + str(count) +".jpg"
@@ -166,11 +166,11 @@ def get_insta_media(post):
                     f.write(receive.content)
             count = count + 1
     else:
+        receive = requests.get(post["media_url"])
         filename = r'docs/assets/'+ folder_name + "/" + str(count) +".jpg"
         if os.path.isfile(filename):
             filename = filename
         else:
-            #print ("File not exist")
             with open(r'docs/assets/'+ folder_name + "/" + str(count) + ".jpg",'wb') as f:
                 f.write(receive.content)
 
@@ -217,7 +217,7 @@ def generate_posts(instagram_data, metadata):
     print("all posts generated")
 
 
-# In[21]:
+# In[9]:
 
 
 def get_metadata(permalink, metadata):
@@ -240,7 +240,7 @@ def get_metadata(permalink, metadata):
 
 def instagram_api_request(requestUrl):
     url = requestUrl + '&access_token=' + access_token_instagram
-    print("Instagram API Request to " + url)
+#     print("Instagram API Request to " + url)
     request = r =requests.get(url)
     response_json = json.loads(request.text)
     return response_json
@@ -296,7 +296,7 @@ def load_instagram_data():
     return instagram_local_data
 
 
-# In[27]:
+# In[14]:
 
 
 metadata = get_google_sheets_data()
