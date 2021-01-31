@@ -6,3 +6,4 @@ vendor
 secrets.json
 client_secret.json
 tmp
+data
