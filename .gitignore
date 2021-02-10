@@ -7,3 +7,5 @@ secrets.json
 client_secret.json
 tmp
 data
+db.json
+__pycache__

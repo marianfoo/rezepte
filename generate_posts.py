@@ -242,7 +242,7 @@ def get_metadata(permalink, metadata):
 def instagram_api_request(requestUrl):
     url = requestUrl + '&access_token=' + access_token_instagram
 #     print("Instagram API Request to " + url)
-    request = r =requests.get(url)
+    request = requests.get(url)
     response_json = json.loads(request.text)
     return response_json
 
