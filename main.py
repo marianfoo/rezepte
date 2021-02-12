@@ -17,9 +17,9 @@ insta = instagram()
 googleAPI = GoogleAPI()
 generateSite = GenerateSite()
 
-# @app.get("/")
-# async def root():
-#     return {"message": "Hello World"}
+@app.get("/")
+async def root(auth: BasicAuth = Depends(basicAuth) ):
+    return {"message": "Hello World"}
 
 
 @app.get("/post/{permalink}")
