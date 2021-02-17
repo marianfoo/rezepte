@@ -1,6 +1,7 @@
 import requests
 import json
 import os
+from tinydb import Query
 class instagram:
     def __init__(self):
         with open('secrets.json') as json_file:
@@ -18,36 +19,79 @@ class instagram:
                 return instagram_json_data
         else:
             return {}
-    def load_instagram_data(self):
-        instagram_local_data = self._load_local_instagram_data()
-        # instagram_data = instagram_api_request("https://graph.instagram.com/me/media?fields=caption,id,media_type,media_url,permalink,thumbnail_url,timestamp,username,children")
-        # for post in instagram_data["data"]:
-        #     try:
-        #         local_post = instagram_local_data[post["permalink"]]
-        #         local_post["caption"] = post["caption"]
-        #         print("post" + post["permalink"] + " found in local data")
-        #     except KeyError:
-        #         # Instagram Post not found, add post to local data
-        #         print("post" + post["permalink"] + " not found in local data")
-        #         instagram_local_data[post["permalink"]] = post
-        #         local_post = instagram_local_data[post["permalink"]]
-        #         ## if children media, add url info
-        #         if "children" in local_post:
-        #             for child in local_post["children"]["data"]:
-        #                 media_id = child["id"]
-        #                 requestUrl = f"https://graph.instagram.com/{media_id}?fields=id,media_type,media_url,permalink,thumbnail_url,timestamp,username"
-        #                 singlemedia_json = instagram_api_request(requestUrl)
-        #                 child["media_type"] = singlemedia_json["media_type"]
-        #                 child["media_url"] = singlemedia_json["media_url"]
-        #                 child["permalink"] = singlemedia_json["permalink"]
-        #                 child["timestamp"] = singlemedia_json["timestamp"]
-        #         get_insta_media(local_post)
-        # with open('data/instagram_data.json', 'w') as fp:
-        #     json.dump(instagram_local_data, fp)
-        return instagram_local_data
+    def load_instagram_data(self, db, tablePosts, metadata):
+        instagram_data = self._instagram_api_request("https://graph.instagram.com/me/media?fields=caption,id,media_type,media_url,permalink,thumbnail_url,timestamp,username,children")
+        for post in instagram_data["data"]:
+            try:
+                dbPost = db.getPostByFullPermalink(post["permalink"])
+                if len(dbPost) == 0:
+                    if "children" in post:
+                        for child in post["children"]["data"]:
+                            media_id = child["id"]
+                            requestUrl = f"https://graph.instagram.com/{media_id}?fields=id,media_type,media_url,permalink,thumbnail_url,timestamp,username"
+                            singlemedia_json = self._instagram_api_request(requestUrl)
+                            child["media_type"] = singlemedia_json["media_type"]
+                            child["media_url"] = singlemedia_json["media_url"]
+                            child["permalink"] = singlemedia_json["permalink"]
+                            child["timestamp"] = singlemedia_json["timestamp"]
+                    tablePosts.insert(post)
+                    self._get_media(post, metadata)
+                else:
+                    post["caption"] = dbPost[0]["caption"]
+                    tablePosts.upsert(post, post["permalink"] == Query().permalink)
+                    self._get_media(post, metadata)
+
+
+            except KeyError:
+                # Instagram Post not found, add post to local data
+                print("post" + post["permalink"] + " not found in local data")
+                #instagram_data[post["permalink"]] = post
+                #ocal_post = instagram_data[post["permalink"]]
+                ## if children media, add url info
+                # if "children" in local_post:
+                #     for child in local_post["children"]["data"]:
+                #         media_id = child["id"]
+                #         requestUrl = f"https://graph.instagram.com/{media_id}?fields=id,media_type,media_url,permalink,thumbnail_url,timestamp,username"
+                #         singlemedia_json = self._instagram_api_request(requestUrl)
+                #         child["media_type"] = singlemedia_json["media_type"]
+                #         child["media_url"] = singlemedia_json["media_url"]
+                #         child["permalink"] = singlemedia_json["permalink"]
+                #         child["timestamp"] = singlemedia_json["timestamp"]
+                # get_insta_media(local_post)
+        return db.getPosts()
+    def _get_media(self, post, metadata):
+        jsonMetaData = self._get_metadata(post["permalink"], metadata)
+        folder_name = jsonMetaData["date"] + "-" + jsonMetaData["filename"]
+        count = 1
+        try:
+            os.mkdir("docs/assets/" + folder_name)
+        except OSError:
+            error = 1
+        if "children" in post:
+            for child in post["children"]["data"]:
+                filename = r'docs/assets/' + folder_name + "/" + str(count) + ".jpg"
+                if os.path.isfile(filename):
+                    filename = filename
+                else:
+                    receive = requests.get(child["media_url"])
+                    with open(filename, 'wb') as f:
+                        f.write(receive.content)
+                count = count + 1
+        else:
+            filename = r'docs/assets/' + folder_name + "/" + str(count) + ".jpg"
+            if os.path.isfile(filename):
+                filename = filename
+            else:
+                receive = requests.get(post["media_url"])
+                with open(r'docs/assets/' + folder_name + "/" + str(count) + ".jpg", 'wb') as f:
+                    f.write(receive.content)
     def _instagram_api_request(self, requestUrl):
         url = requestUrl + '&access_token=' + self.access_token_instagram
     #     print("Instagram API Request to " + url)
         request = requests.get(url)
         response_json = json.loads(request.text)
         return response_json
+    def _get_metadata(self, permalink, metadata):
+        for tupel in metadata:
+            if tupel["permalink"] == permalink:
+                return tupel

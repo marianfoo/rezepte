@@ -9,3 +9,4 @@ tmp
 data
 db.json
 __pycache__
+.idea
