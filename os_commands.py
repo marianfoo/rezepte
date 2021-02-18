@@ -1,0 +1,2 @@
+class osCommands:
+    def writeToFile():

@@ -2,18 +2,17 @@ import os
 import glob
 import codecs
 class GenerateSite:
-    def generate_posts(self, instagram_data, metadata):
+    def generate_posts(self, instagram_data):
         # delete all current posts
         files = glob.glob('docs/_posts/*')
         for f in files:
             os.remove(f)
         for post in instagram_data:
-            jsonMetaData = self.get_metadata(post["permalink"], metadata)
-            filename = jsonMetaData["date"] + "-" + jsonMetaData["date"]  + "-" +  jsonMetaData["filename"] + ".md"
-            picturefilename = jsonMetaData["date"] + "-" + jsonMetaData["filename"]
+            filename = post["date"] + "-" + post["date"]  + "-" +  post["filename"] + ".md"
+            picturefilename = post["date"] + "-" + post["filename"]
             f = codecs.open("docs/_posts/"+ filename, "w", "utf-8")
             f.write("---\n")
-            f.write("title: '"+ jsonMetaData["title"] + "'\n")
+            f.write("title: '"+ post["title"] + "'\n")
             f.write("categories:\n")
             f.write("  - Blog\n")
     #         f.write("tags:\n")
@@ -37,7 +36,3 @@ class GenerateSite:
             f.write("\n")
             f.close()
         print("all posts generated")
-    def get_metadata(self, permalink, metadata):
-        for tupel in metadata:
-            if tupel["permalink"] == permalink:
-                return tupel

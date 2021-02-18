@@ -2,11 +2,12 @@ import secrets
 import uvicorn
 from fastapi import Depends, FastAPI, HTTPException, status
 from fastapi.security import HTTPBasic, HTTPBasicCredentials
-from BasicAuth import BasicAuth
+from fastapi.responses import JSONResponse
+from basic_auth import BasicAuth
 import json
-from dbClass import DBClass
+from dbclass import DBClass
 from instagram import instagram
-from googleAPI import GoogleAPI
+from google_api import GoogleAPI
 from generatesite import GenerateSite
 #Fast API
 app = FastAPI()
@@ -24,8 +25,12 @@ async def root(auth: BasicAuth = Depends(basicAuth) ):
 
 
 @app.get("/post/{permalink}")
-async def read_post(permalink: str = Depends(basicAuth)):
-    return db.getPost(permalink)
+async def read_post(permalink, auth: str = Depends(basicAuth)):
+    post_permalink = db.getPostByPermalink(permalink)
+    if post_permalink is None:
+        return post_permalink
+    else:
+        return JSONResponse(status_code=status.HTTP_404_NOT_FOUND, content={"message": "Instagram Post not found"})
 
 @app.get("/posts")
 async def read_post(permalink: str = Depends(basicAuth)):
@@ -34,8 +39,8 @@ async def read_post(permalink: str = Depends(basicAuth)):
 @app.get("/triggerBuild")
 async def triggerBuild(auth: BasicAuth = Depends(basicAuth) ):
     instagram_data = db.tablePosts.all()
-    metadata = googleAPI.get_google_sheets_data()
-    generateSite.generate_posts(instagram_data,metadata)
+    generateSite.generate_posts(instagram_data)
+    return {"message": "Post generated"}
 
 @app.get("/readInstagramPosts")
 async def readInstagramPosts(auth: BasicAuth = Depends(basicAuth) ):

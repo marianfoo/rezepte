@@ -1,6 +1,7 @@
 import requests
 import json
 import os
+import ast
 from tinydb import Query
 class instagram:
     def __init__(self):
@@ -24,7 +25,7 @@ class instagram:
         for post in instagram_data["data"]:
             try:
                 dbPost = db.getPostByFullPermalink(post["permalink"])
-                if len(dbPost) == 0:
+                if dbPost is None:
                     if "children" in post:
                         for child in post["children"]["data"]:
                             media_id = child["id"]
@@ -37,27 +38,14 @@ class instagram:
                     tablePosts.insert(post)
                     self._get_media(post, metadata)
                 else:
-                    post["caption"] = dbPost[0]["caption"]
-                    tablePosts.upsert(post, post["permalink"] == Query().permalink)
+                    db.updatePost(post["permalink"], "caption", dbPost["caption"])
                     self._get_media(post, metadata)
+                self._add_metadata_to_post_db(db, post, metadata)
 
 
             except KeyError:
                 # Instagram Post not found, add post to local data
                 print("post" + post["permalink"] + " not found in local data")
-                #instagram_data[post["permalink"]] = post
-                #ocal_post = instagram_data[post["permalink"]]
-                ## if children media, add url info
-                # if "children" in local_post:
-                #     for child in local_post["children"]["data"]:
-                #         media_id = child["id"]
-                #         requestUrl = f"https://graph.instagram.com/{media_id}?fields=id,media_type,media_url,permalink,thumbnail_url,timestamp,username"
-                #         singlemedia_json = self._instagram_api_request(requestUrl)
-                #         child["media_type"] = singlemedia_json["media_type"]
-                #         child["media_url"] = singlemedia_json["media_url"]
-                #         child["permalink"] = singlemedia_json["permalink"]
-                #         child["timestamp"] = singlemedia_json["timestamp"]
-                # get_insta_media(local_post)
         return db.getPosts()
     def _get_media(self, post, metadata):
         jsonMetaData = self._get_metadata(post["permalink"], metadata)
@@ -91,6 +79,14 @@ class instagram:
         request = requests.get(url)
         response_json = json.loads(request.text)
         return response_json
+    def _add_metadata_to_post_db(self,db, post, metadata):
+        metadata_post = self._get_metadata(post["permalink"], metadata)
+        for key in metadata_post:
+            if key == 'tags':
+                string_list = ast.literal_eval(metadata_post[key])
+                db.updatePost(post["permalink"], key, string_list)
+            else:
+                db.updatePost(post["permalink"], key, metadata_post[key])
     def _get_metadata(self, permalink, metadata):
         for tupel in metadata:
             if tupel["permalink"] == permalink:
