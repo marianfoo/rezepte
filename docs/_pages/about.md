@@ -1,6 +1,6 @@
 ---
 permalink: /about/
-title: "Über"
+title: "Zimtschnecken"
 ---
 
 Die ist ein Tagebuch für Essen mit Rezepten

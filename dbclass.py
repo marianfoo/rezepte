@@ -4,6 +4,7 @@ class DBClass:
     def __init__(self):
         self.db = TinyDB('db.json')
         self.tablePosts = self.db.table('Posts')
+        self.recipes = self.db.table('Recipes')
     def getPostByPermalink(self, permalink):
         User = Query()
         full_permalink = 'https://www.instagram.com/p/' + permalink + '/'
@@ -14,5 +15,8 @@ class DBClass:
     def getPostByFullPermalink(self, full_permalink):
         User = Query()
         return self.tablePosts.get(User.permalink == full_permalink)
+    def getRecipeByLink(self, link):
+        User = Query()
+        return self.recipes.get(User.link == link)
     def getPosts(self):
         return self.tablePosts.all()

@@ -9,6 +9,7 @@ from dbclass import DBClass
 from instagram import instagram
 from google_api import GoogleAPI
 from generatesite import GenerateSite
+from parse_recipe import RecipeParser
 #Fast API
 app = FastAPI()
 security = HTTPBasic()
@@ -18,6 +19,7 @@ db = DBClass()
 insta = instagram()
 googleAPI = GoogleAPI()
 generateSite = GenerateSite()
+recipeparser = RecipeParser()
 
 @app.get("/")
 async def root(auth: BasicAuth = Depends(basicAuth) ):
@@ -36,6 +38,10 @@ async def read_post(permalink, auth: str = Depends(basicAuth)):
 async def read_post(permalink: str = Depends(basicAuth)):
     return db.tablePosts.all()
 
+@app.get("/recipes")
+async def read_post(permalink: str = Depends(basicAuth)):
+    return db.recipes.all()
+
 @app.get("/triggerBuild")
 async def triggerBuild(auth: BasicAuth = Depends(basicAuth) ):
     instagram_data = db.tablePosts.all()
@@ -47,6 +53,13 @@ async def readInstagramPosts(auth: BasicAuth = Depends(basicAuth) ):
     metadata = googleAPI.get_google_sheets_data()
     insta.load_instagram_data(db, db.tablePosts, metadata)
     return {"message": "Instagram Posts loaded"}
+
+@app.get("/parseRecipe")
+async def parseRecipe(auth: BasicAuth = Depends(basicAuth) ):
+    recipeparser.parse_recipe()
+    return {"message": "Instagram Posts loaded"}
+
+
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)

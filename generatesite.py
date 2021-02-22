@@ -14,7 +14,7 @@ class GenerateSite:
             f.write("---\n")
             f.write("title: '"+ post["title"] + "'\n")
             f.write("categories:\n")
-            f.write("  - Blog\n")
+            f.write("  - Essen\n")
     #         f.write("tags:\n")
     #         for tag in jsonMetaData["tags"]:
     #             f.write("  - " +tag + "\n")
