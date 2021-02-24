@@ -19,5 +19,9 @@ instructions:
     - '7. Spaghetti mit in die Pfanne, alles gut mischen'
     - '8. Petersilie darüber und vermischen'
     - '9. noch mal ein bisschen Olivenöl verteilen, fertig'
+images: 
+    - '0.jpg'
 ---
+
+![](..\..\.\assets\recipes\kimsgarnelen\0.jpg)
 

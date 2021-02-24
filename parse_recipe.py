@@ -52,6 +52,17 @@ class RecipeParser:
                             recipe_object["instructions"].append(li.text)
                 except:
                     None
+                recipe_photos = soup.find_all("img", {"class": "recipe-photos"})
+                recipe_object["images"] = []
+                for i in range(len(recipe_photos)):
+                    image_object = {}
+                    photo = recipe_photos[i]
+                    source_url = "https://recipekeeperonline.com" + photo["src"]
+                    filename = str(i) + ".jpg"
+                    image_object["source_url"] = source_url
+                    image_object["filename"] = filename
+                    recipe_object["images"].append(image_object)
+                self._download_image_to_folder(recipe_object["images"], recipe_object["permalink"])
 
                 self.db.recipes.insert(recipe_object)
                 print(recipe_object)
@@ -77,9 +88,28 @@ class RecipeParser:
             f.write("instructions: \n")
             for instruction in recipe["instructions"]:
                 f.write("    - '" + instruction + "'\n")
+            f.write("images: \n")
+            for image in recipe["images"]:
+                f.write("    - '" + image["filename"] + "'\n")
             f.write("---\n")
             f.write("\n")
             f.close()
+
+    def _download_image_to_folder(self, recipe_images, foldername):
+        # try to create folder
+        try:
+            os.mkdir("docs/assets/recipes/" + foldername)
+        except OSError:
+            error = 1
+        # delete files in this folder
+        files = glob.glob("docs/assets/recipes/" + foldername + "/*")
+        for f in files:
+            os.remove(f)
+        for recipe_image in recipe_images:
+            filename = r'docs/assets/recipes/' + foldername + "/" + recipe_image["filename"]
+            receive = requests.get(recipe_image["source_url"] )
+            with open(filename, 'wb') as f:
+                f.write(receive.content)
 
 
 

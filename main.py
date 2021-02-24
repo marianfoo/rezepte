@@ -59,6 +59,11 @@ async def parseRecipe(auth: BasicAuth = Depends(basicAuth) ):
     recipeparser.parse_recipe()
     return {"message": "Instagram Posts loaded"}
 
+@app.get("/generateRecipes")
+async def generateRecipes(auth: BasicAuth = Depends(basicAuth) ):
+    recipeparser.generate_recipes()
+    return {"message": "Recipes generated"}
+
 
 
 if __name__ == "__main__":

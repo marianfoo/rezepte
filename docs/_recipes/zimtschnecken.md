@@ -35,5 +35,7 @@ instructions:
     - '12. Legen Sie die Backform in den Ofen und backen Sie sie 20 Minuten oder bis sie goldbraun sind. Die Garzeit kann stark variieren!'
     - '13. Während die Rollen backen, den Guss herstellen, indem alle Zutaten für den Guss verrührt und mit einem elektrischen Rührgerät gut geschlagen werden, bis sie flaumig und glatt sind.'
     - '14. Wenn die Rollen fertig sind, großzügig mit Zuckerguss bestreichen.'
+images: 
+    - '0.jpg'
 ---
-
+![](..\..\.\assets\recipes\zimtschnecken\0.jpg)
