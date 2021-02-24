@@ -1,7 +1,7 @@
 ---
 title: 'Menü: Sonntag 07.02.2021 "Ungarn"'
 categories:
-  - Blog
+  - Essen
 ---
 
 Menü 07.02.2021 Thema Frankreich

@@ -1,7 +1,7 @@
 ---
 title: 'Menü: Sonntag 10.01.2021 "Comfort Food"'
 categories:
-  - Blog
+  - Essen
 ---
 
 Sonntag 10.01.2021
