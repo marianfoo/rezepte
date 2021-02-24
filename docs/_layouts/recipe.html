@@ -17,7 +17,7 @@ layout: default
 <div id="main" role="main">
     {% include sidebar.html %}
 
-    <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <article class="page" itemscope itemtype="https://schema.org/Recipe">
         {% if page.title %}
         <meta itemprop="name" content="{{ page.title | markdownify | strip_html | strip_newlines | escape_once }}">
         {% endif %}
@@ -40,9 +40,9 @@ layout: default
                     remove: "</p>" }}
                 </h1>
                 {% endif %}
-                {% if page.course %}<h2 id="recipeCourse" class="page__title" itemprop="recipeCourse">{{ page.course
+                {% if page.course %}<h2 id="recipeCategory" class="page__title" itemprop="recipeCategory">{{ page.course
                 }}</h2>{% endif %}
-                {% if page.tag %}<h2 id="recipeCategory" class="page__title" itemprop="recipeCategory">{{ page.tag
+                {% if page.tag %}<h2 id="recipeCuisine" class="page__title" itemprop="recipeCuisine">{{ page.tag
                 }}</h2>{% endif %}
                 {% include page__meta.html %}
             </header>
@@ -52,7 +52,7 @@ layout: default
                 <h3>Zutaten</h3>
                 <ul class="list-unstyled recipe-ingredients">
                     {% for ingredient in page.ingredients %}
-                    <li itemprop="ingredient">{{ ingredient }}</li>
+                    <li itemprop="recipeIngredient">{{ ingredient }}</li>
                     {% endfor %}
                 </ul>
                 <h3>Zubereitung</h3>
