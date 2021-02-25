@@ -61,7 +61,9 @@ layout: default
                         <li >{{ instruction }}</li>
                     {% endfor %}
                 </ul>
-{{ content }}
+                {% for image in page.images %}
+                <p><img src="..\..\.\assets{{ page.permalink }}\{{ image }}" alt="" itemprop=image/></p>
+                {% endfor %}
             </section>
 
             <footer class="page__meta">
