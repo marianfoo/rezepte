@@ -21,7 +21,7 @@ ingredients:
     - '0,5 TL Vanille-Extrakt'
     - 'Salz'
 instructions: 
-    - '1. Für die Rollen lösen Sie die Hefe in der warmen Milch mit einem Teelöffel Zucker (Sie können einen Teelöffel aus der 1/2 Tasse Zucker nehmen) in einer großen Schüssel auf. Lassen Sie sie etwa 5 Minuten ruhen. Wenn die Hefe gut ist, beginnt sie aufzuschäumen.'
+    - 'Für die Rollen lösen Sie die Hefe in der warmen Milch mit einem Teelöffel Zucker (Sie können einen Teelöffel aus der 1/2 Tasse Zucker nehmen) in einer großen Schüssel auf. Lassen Sie sie etwa 5 Minuten ruhen. Wenn die Hefe gut ist, beginnt sie aufzuschäumen.'
     - '2. Geben Sie Zucker, Butter oder Margarine, Salz, Eier und Mehl in die Schüssel Ihres Mixers und verrühren Sie es, bis es gut eingearbeitet ist.'
     - '3. Die Milch-/Hefemischung über die Mehlmischung gießen und mit dem Knethaken gut vermischen, bis sie gut eingearbeitet ist und der Teig vom Schüsselrand her sauber wird.'
     - '4. Den Teig in eine geölte Schüssel geben, zudecken und an einem warmen Ort ca. 1 Stunde gehen lassen oder bis der Teig sich verdoppelt hat.'
@@ -38,4 +38,4 @@ instructions:
 images: 
     - '0.jpg'
 ---
-![](..\..\.\assets\recipes\zimtschnecken\0.jpg)
+

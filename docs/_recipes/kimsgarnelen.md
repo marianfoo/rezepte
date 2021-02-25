@@ -23,5 +23,3 @@ images:
     - '0.jpg'
 ---
 
-![](..\..\.\assets\recipes\kimsgarnelen\0.jpg)
-
