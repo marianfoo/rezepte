@@ -1,11 +1,11 @@
 main:
-  - title: "Einträge"
-    url: /posts/
-  - title: "Kategorien"
-    url: /categories/
-  - title: "Schlagwörter"
-    url: /tags/
-  - title: "Über"
-    url: /about/
   - title: "Rezepte"
     url: /recipes/
+  - title: "Einträge"
+    url: /posts/
+#  - title: "Kategorien"
+#    url: /categories/
+#  - title: "Schlagwörter"
+#    url: /tags/
+  - title: "Über"
+    url: /about/
