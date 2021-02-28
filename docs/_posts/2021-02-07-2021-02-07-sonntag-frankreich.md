@@ -12,6 +12,7 @@ Als Nachspeise Schokoladenmousse mit Zartbitterschokolade.
 
 #muscheln #moulesvinblanc #coqauvin #gratindepommedeterre 
 #mousseauchocolat
+
 ![](..\..\.\assets\2021-02-07-sonntag-frankreich\1.jpg)
 
 ![](..\..\.\assets\2021-02-07-sonntag-frankreich\2.jpg)

@@ -2,7 +2,7 @@ import os
 import glob
 import codecs
 class GenerateSite:
-    def generate_posts(self, instagram_data):
+    def generate_posts(self, instagram_data, db):
         # delete all current posts
         files = glob.glob('docs/_posts/*')
         for f in files:
@@ -22,6 +22,15 @@ class GenerateSite:
                 f.write("---\n")
                 f.write("\n")
                 f.write(post["caption"].split("{",1)[0])
+
+                recipes = db.getAllRecipesByPost(post["permalink"])
+                if recipes:
+                    f.write("\n")
+                    f.write("\n")
+                    f.write("### Rezepte:\n")
+                for recipe in recipes:
+                    f.write(f"  - [{recipe['name']}](/recipes/{recipe['permalink']})\n")
+                f.write("\n")
                 f.write("\n")
                 count = 1
                 if "children" in post:

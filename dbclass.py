@@ -18,5 +18,16 @@ class DBClass:
     def getRecipeByLink(self, link):
         User = Query()
         return self.recipes.get(User.link == link)
+    def getRecipeByPermalink(self, permalink):
+        User = Query()
+        return self.recipes.get(User.permalink == permalink)
+    def getAllRecipesByPost(self, permalink):
+        post = self.getPostByFullPermalink(permalink)
+        recipes = []
+        if "recipes" in post:
+            for recipe_permalink in post['recipes']:
+                recipe = self.getRecipeByPermalink(recipe_permalink)
+                recipes.append(recipe)
+        return recipes
     def getPosts(self):
         return self.tablePosts.all()

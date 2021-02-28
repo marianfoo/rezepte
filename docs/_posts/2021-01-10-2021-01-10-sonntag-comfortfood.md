@@ -12,6 +12,7 @@ Als Hauptspeise der bereits gezeigte Rinderschmorbraten mit Klößen und Blaukra
 Als Nachspeise einfach Tartes mit Mascarpone und Früchte garniert.
 
 #maronen #suppe #maronensuppe #rinderbraten #schmorbraten #klöße #rotkohl #blaukraut #blätterteig #tartes #früchte
+
 ![](..\..\.\assets\2021-01-10-sonntag-comfortfood\1.jpg)
 
 ![](..\..\.\assets\2021-01-10-sonntag-comfortfood\2.jpg)

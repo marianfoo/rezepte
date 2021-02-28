@@ -29,7 +29,7 @@ async def root(auth: BasicAuth = Depends(basicAuth) ):
 @app.get("/post/{permalink}")
 async def read_post(permalink, auth: str = Depends(basicAuth)):
     post_permalink = db.getPostByPermalink(permalink)
-    if post_permalink is None:
+    if post_permalink is not None:
         return post_permalink
     else:
         return JSONResponse(status_code=status.HTTP_404_NOT_FOUND, content={"message": "Instagram Post not found"})
@@ -42,10 +42,23 @@ async def read_post(permalink: str = Depends(basicAuth)):
 async def read_post(permalink: str = Depends(basicAuth)):
     return db.recipes.all()
 
+@app.get("/recipe/{permalink}")
+async def read_post(permalink, auth: str = Depends(basicAuth)):
+    recipe = db.getRecipeByPermalink(permalink)
+    if recipe is not None:
+        return recipe
+    else:
+        return JSONResponse(status_code=status.HTTP_404_NOT_FOUND, content={"message": "Recipe not found"})
+
+@app.get("/post/{permalink}/recipes")
+async def read_recipes_from_posts(permalink, auth: str = Depends(basicAuth)):
+    recipes = db.getAllRecipesByPost(permalink)
+    return recipes
+
 @app.get("/triggerBuild")
 async def triggerBuild(auth: BasicAuth = Depends(basicAuth) ):
     instagram_data = db.tablePosts.all()
-    generateSite.generate_posts(instagram_data)
+    generateSite.generate_posts(instagram_data, db)
     return {"message": "Post generated"}
 
 @app.get("/readInstagramPosts")

@@ -118,5 +118,5 @@ class RecipeParser:
 
 
 
-recipeparser = RecipeParser()
-recipeparser.parse_recipe(True)
+#recipeparser = RecipeParser()
+#recipeparser.parse_recipe(True)

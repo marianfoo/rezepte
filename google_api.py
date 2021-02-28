@@ -19,7 +19,7 @@ class GoogleAPI:
             credentials = service_account.Credentials.from_service_account_file(secret_file, scopes=scopes)
             service = discovery.build('sheets', 'v4', credentials=credentials)
 
-            request  = service.spreadsheets().values().get(spreadsheetId=self.spreadsheet_id, range='A1:F300')
+            request  = service.spreadsheets().values().get(spreadsheetId=self.spreadsheet_id, range='A1:G300')
             response = request.execute()
 
             metadata = []

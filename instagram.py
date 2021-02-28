@@ -8,18 +8,6 @@ class instagram:
         with open('secrets.json') as json_file:
             json_file_secrets = json.load(json_file)
             self.access_token_instagram = json_file_secrets["instagram_access_token"]
-    def _load_local_instagram_data(self):
-        if os.path.isdir("data") == False:
-            try:
-                os.mkdir("data")
-            except OSError as e:
-                print (e)
-        if os.path.isfile("data/instagram_data.json"):
-            with open('data/instagram_data.json', 'r') as fp:
-                instagram_json_data = json.load(fp)
-                return instagram_json_data
-        else:
-            return {}
     def load_instagram_data(self, db, tablePosts, metadata):
         instagram_data = self._instagram_api_request("https://graph.instagram.com/me/media?fields=caption,id,media_type,media_url,permalink,thumbnail_url,timestamp,username,children")
         for post in instagram_data["data"]:
@@ -89,6 +77,9 @@ class instagram:
         else:
             for key in metadata_post:
                 if key == 'tags':
+                    string_list = ast.literal_eval(metadata_post[key])
+                    db.updatePost(post["permalink"], key, string_list)
+                elif key == 'recipes':
                     string_list = ast.literal_eval(metadata_post[key])
                     db.updatePost(post["permalink"], key, string_list)
                 else:
