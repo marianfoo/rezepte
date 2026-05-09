@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mein Essenstagebuch – Rezepte</title>
+<meta name="description" content="Sammlung privater Rezepte. Jedes Rezept ist als eigene Webseite verfügbar und kann in Rezept-Apps wie FamilyWall importiert werden.">
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='0.9em' font-size='90'%3E%F0%9F%8D%B2%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="./">Mein Essenstagebuch</a></h1>
+    <p class="site-tagline">Private Rezeptsammlung – mobiltauglich und importfreundlich.</p>
+  </div>
+</header>
+
+<main>
+  <p class="notice">
+    <strong>Hinweis:</strong> Diese Seite kann als Webrezept-URL in Rezept-Apps
+    (z.B. FamilyWall) getestet werden. Jede Rezeptseite enthält strukturierte
+    Daten nach <code>schema.org/Recipe</code>.
+  </p>
+
+  <div class="search-bar">
+    <label for="recipe-search" class="visually-hidden" style="position:absolute;left:-10000px">Rezept suchen</label>
+    <input id="recipe-search" type="search" placeholder="Rezept suchen..." autocomplete="off">
+  </div>
+
+  <ul class="recipe-grid">
+
+    <li class="recipe-card" data-search="Kohlrabi-Auflauf ohne Fleisch Hauptgericht vegetarisch Kartoffeln Möhren Gouda Hausmannskost">
+      <a class="recipe-card-link" href="kohlrabi-auflauf-ohne-fleisch/">
+        <span class="recipe-card-image placeholder" aria-hidden="true">🥔</span>
+        <div class="recipe-card-body">
+          <h2 class="recipe-card-title">Kohlrabi-Auflauf ohne Fleisch</h2>
+          <p class="recipe-card-meta">Hauptgericht · ca. 60–70 Min · 4 Portionen</p>
+          <div class="recipe-card-actions">
+            <span class="btn btn-primary">Rezept öffnen</span>
+          </div>
+        </div>
+      </a>
+    </li>
+
+    <li class="recipe-card" data-search="Roggenvollkornbrot mit Sonnenblumenkernen Hauptgericht Brot">
+      <a class="recipe-card-link" href="roggenvollkornbrot/">
+        <span class="recipe-card-image" style="background-image:url('assets/roggenvollkornbrot/0.jpg')" aria-hidden="true"></span>
+        <div class="recipe-card-body">
+          <h2 class="recipe-card-title">Roggenvollkornbrot mit Sonnenblumenkernen</h2>
+          <p class="recipe-card-meta">Hauptgericht · Brot</p>
+          <div class="recipe-card-actions">
+            <span class="btn btn-primary">Rezept öffnen</span>
+          </div>
+        </div>
+      </a>
+    </li>
+
+    <li class="recipe-card" data-search="Kims Garnelen Spaghetti Pasta Spinat Knoblauch">
+      <a class="recipe-card-link" href="kimsgarnelen/">
+        <span class="recipe-card-image" style="background-image:url('assets/kimsgarnelen/0.jpg')" aria-hidden="true"></span>
+        <div class="recipe-card-body">
+          <h2 class="recipe-card-title">Kims Garnelen Spaghetti</h2>
+          <p class="recipe-card-meta">Hauptgericht · Pasta</p>
+          <div class="recipe-card-actions">
+            <span class="btn btn-primary">Rezept öffnen</span>
+          </div>
+        </div>
+      </a>
+    </li>
+
+    <li class="recipe-card" data-search="Zimtschnecken Nachspeise Hefeteig">
+      <a class="recipe-card-link" href="zimtschnecken/">
+        <span class="recipe-card-image" style="background-image:url('assets/zimtschnecken/0.jpg')" aria-hidden="true"></span>
+        <div class="recipe-card-body">
+          <h2 class="recipe-card-title">Zimtschnecken</h2>
+          <p class="recipe-card-meta">Nachspeise · Hefeteig</p>
+          <div class="recipe-card-actions">
+            <span class="btn btn-primary">Rezept öffnen</span>
+          </div>
+        </div>
+      </a>
+    </li>
+
+    <li class="recipe-card" data-search="Griechischer Krautsalat Beilage Kohl Salat">
+      <a class="recipe-card-link" href="griechischer-krautsalat/">
+        <span class="recipe-card-image placeholder" aria-hidden="true">🥗</span>
+        <div class="recipe-card-body">
+          <h2 class="recipe-card-title">Griechischer Krautsalat</h2>
+          <p class="recipe-card-meta">Beilage · Griechisch</p>
+          <div class="recipe-card-actions">
+            <span class="btn btn-primary">Rezept öffnen</span>
+          </div>
+        </div>
+      </a>
+    </li>
+
+    <li class="recipe-card" data-search="Griechisches Joghurt Mousse Honignüsse Nachspeise Dessert">
+      <a class="recipe-card-link" href="griechisches-joghurt-mousse/">
+        <span class="recipe-card-image placeholder" aria-hidden="true">🍯</span>
+        <div class="recipe-card-body">
+          <h2 class="recipe-card-title">Griechisches Joghurt Mousse mit Honignüssen</h2>
+          <p class="recipe-card-meta">Nachspeise · Griechisch</p>
+          <div class="recipe-card-actions">
+            <span class="btn btn-primary">Rezept öffnen</span>
+          </div>
+        </div>
+      </a>
+    </li>
+
+    <li class="recipe-card" data-search="Kolokithokeftedes Zucchinipuffer Vorspeise griechisch">
+      <a class="recipe-card-link" href="kolokithokeftedes/">
+        <span class="recipe-card-image placeholder" aria-hidden="true">🥒</span>
+        <div class="recipe-card-body">
+          <h2 class="recipe-card-title">Kolokithokeftedes – saftige Zucchinipuffer</h2>
+          <p class="recipe-card-meta">Vorspeise · Griechisch</p>
+          <div class="recipe-card-actions">
+            <span class="btn btn-primary">Rezept öffnen</span>
+          </div>
+        </div>
+      </a>
+    </li>
+
+    <li class="recipe-card" data-search="Tsatsiki griechisch Joghurt Gurke Knoblauch Vorspeise Dip">
+      <a class="recipe-card-link" href="tsatsiki/">
+        <span class="recipe-card-image placeholder" aria-hidden="true">🥒</span>
+        <div class="recipe-card-body">
+          <h2 class="recipe-card-title">Griechisches Tsatsiki</h2>
+          <p class="recipe-card-meta">Vorspeise · Dip · Griechisch</p>
+          <div class="recipe-card-actions">
+            <span class="btn btn-primary">Rezept öffnen</span>
+          </div>
+        </div>
+      </a>
+    </li>
+
+  </ul>
+
+  <p id="no-results" class="no-results">Keine Rezepte gefunden.</p>
+</main>
+
+<footer class="site-footer">
+  <p>Mein Essenstagebuch · privates Rezept-Archiv</p>
+</footer>
+
+<script src="script.js" defer></script>
+
+</body>
+</html>
