@@ -1,12 +1,5 @@
-_site
-.sass-cache
-.jekyll-cache
-.jekyll-metadata
-vendor
-secrets.json
-client_secret.json
-tmp
-data
-db.json
-__pycache__
+.DS_Store
 .idea
+.vscode
+node_modules
+tmp
